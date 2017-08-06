@@ -48,11 +48,11 @@ public interface ESPNCricInfoConstant {
 
     String TEST_BATTING_INNINGS_SUFFIX = "?class=1;template=results;type=batting;view=innings";
 
-    String COUNTRY_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"http://www.espncricinfo.com/((\\w*)/content/current/team/\\d*.html)\"";
+    String COUNTRY_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"http://www.espncricinfo.com/((\\w*)/content/current/team/(\\d*).html)\"";
 
     Pattern COUNTRY_PATTERN = Pattern.compile(COUNTRY_PATTERN_STR);
 
-    String PLAYER_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"(/\\w*/content/player/\\d*.html)\"\\s*class\\s*=\\s*\"\\w*\"\\s*>\\s*([\\w|\\s]*)\\s*<\\s*/\\s*a\\s*>";
+    String PLAYER_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"(/\\w*/content/player/\\d*.html)\"\\s*>([a-z|A-Z|\\s]*)<\\s*/\\s*a\\s*>\\s*";
 
     Pattern PLAYER_PATTERN = Pattern.compile(PLAYER_PATTERN_STR);
 

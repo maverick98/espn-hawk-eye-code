@@ -108,12 +108,12 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
         while (countryMatcher.find()) {
 
             String cName = countryMatcher.group(2);
+            String countryId = countryMatcher.group(3);
 
             if (cName.equalsIgnoreCase(countryName)) {
 
-                String countryURLpostfix = countryMatcher.group(1);
-
-                countryURL = ESPNCRICINFO +"/"+ countryURLpostfix;
+                countryURL = ESPNCRICINFO +"/"+ countryName+"/content/player/country.html?country="+countryId;
+                        
 
                 break;
             }
