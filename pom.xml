@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.espn.hawkeye</groupId>
     <artifactId>espnhawkeye</artifactId>
-	 <version>17.8</version>
+	 <version>18.07</version>
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
             <groupId>org</groupId>
             <artifactId>hawkeye</artifactId>
-            <version>17.8</version>
+            <version>18.07</version>
         </dependency>
     </dependencies>
     <properties>
