@@ -52,7 +52,7 @@ public interface ESPNCricInfoConstant {
 
     Pattern COUNTRY_PATTERN = Pattern.compile(COUNTRY_PATTERN_STR);
 
-    String PLAYER_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"(/\\w*/content/player/\\d*.html)\"\\s*>([a-z|A-Z|\\s]*)<\\s*/\\s*a\\s*>\\s*";
+    String PLAYER_PATTERN_STR = "<\\s*a\\s*href\\s*=\\s*\"(/\\w*/content/player/\\d*.html)\"\\s*class\\s*=\\s*\"ColumnistSmry\"\\s*style\\s*=\\s*\"valign:middle;\"\\s*>([a-z|A-Z|\\s]*)<\\s*/\\s*a\\s*>\\s*";
 
     Pattern PLAYER_PATTERN = Pattern.compile(PLAYER_PATTERN_STR);
 

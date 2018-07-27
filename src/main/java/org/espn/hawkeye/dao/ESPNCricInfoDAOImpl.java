@@ -19,6 +19,8 @@ package org.espn.hawkeye.dao;
 
 import org.apache.log4j.Logger;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 
 import org.cricket.hawkeye.dao.DataPattern;
@@ -99,9 +101,9 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
      * @throws DAOException
      */
     @Override
-    public String findCountryPath(String countryName) throws DAOException {
+    public List<String> findCountryPath(String countryName) throws DAOException {
 
-        String countryURL = null;
+        List<String> countryURL = new ArrayList<>();
 
         Matcher countryMatcher = COUNTRY_PATTERN.matcher(super.findCountrysHTML());
 
@@ -112,7 +114,9 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
 
             if (cName.equalsIgnoreCase(countryName)) {
 
-                countryURL = ESPNCRICINFO +"/"+ countryName+"/content/player/country.html?country="+countryId;
+                countryURL.add(ESPNCRICINFO +"/"+ countryName+"/content/player/caps.html?country="+countryId+";class=1");
+                countryURL.add(ESPNCRICINFO +"/"+ countryName+"/content/player/caps.html?country="+countryId+";class=2");
+                countryURL.add(ESPNCRICINFO +"/"+ countryName+"/content/player/caps.html?country="+countryId+";class=3");
                         
 
                 break;
@@ -133,7 +137,7 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
     @Override
     public String findCountryHTML(String countryName) throws DAOException {
 
-        String countryURL = this.findCountryPath(countryName);
+        List<String> countryURL = this.findCountryPath(countryName);
 
         if (countryURL == null) {
 
@@ -141,12 +145,12 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
 
         }
 
-        String result = null;
+        StringBuilder result = new StringBuilder();
 
         try {
-
-            result = this.getUrlService().fetch(countryURL);
-
+            for(String cURL: countryURL){
+                result.append(this.getUrlService().fetch(cURL));
+            }
         } catch (URLServiceException ex) {
 
             logger.error("error occurred",ex);
@@ -155,7 +159,7 @@ public class ESPNCricInfoDAOImpl extends DefaultCricDataDAOImpl {
 
         }
 
-        return result;
+        return result.toString();
 
     }
 
